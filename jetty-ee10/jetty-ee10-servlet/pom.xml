@@ -14,6 +14,7 @@
   <properties>
     <bundle-symbolic-name>${project.groupId}.servlet</bundle-symbolic-name>
     <spotbugs.onlyAnalyze>org.eclipse.jetty.ee10.servlet.*</spotbugs.onlyAnalyze>
+    <maven.build.cache.enabled>false</maven.build.cache.enabled>
   </properties>
 
   <build>
