@@ -15,7 +15,7 @@ pipeline {
         stage("Build / Test - JDK21") {
           agent { node { label 'linux' } }
           steps {
-            timeout( time: 180, unit: 'MINUTES' ) {
+            timeout( time: 90, unit: 'MINUTES' ) {
               checkout scm
               mavenBuild( "jdk21", "clean install -Dspotbugs.skip=true -Djacoco.skip=true", "maven3")
               recordIssues id: "jdk21", name: "Static Analysis jdk21", aggregatingResults: true, enabledForFailure: true, tools: [mavenConsole(), java(), checkStyle()]
@@ -28,7 +28,7 @@ pipeline {
         stage("Build / Test - JDK17") {
           agent { node { label 'linux' } }
           steps {
-            timeout( time: 180, unit: 'MINUTES' ) {
+            timeout( time: 90, unit: 'MINUTES' ) {
               checkout scm
               mavenBuild( "jdk17", "clean install -Perrorprone", "maven3") // javadoc:javadoc
               // Collect up the jacoco execution results (only on main build)
