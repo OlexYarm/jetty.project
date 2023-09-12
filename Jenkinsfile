@@ -19,9 +19,13 @@ pipeline {
               checkout scm
               mavenBuild( "jdk21", "clean install -Dspotbugs.skip=true -Djacoco.skip=true", "maven3")
               recordIssues id: "jdk21", name: "Static Analysis jdk21", aggregatingResults: true, enabledForFailure: true, tools: [mavenConsole(), java(), checkStyle()]
-              archiveArtifacts artifacts: '**/jetty-ee10/jetty-ee10-servlet/target/surefire-reports/*.dumpstream*',
-                      allowEmptyArchive: true, fingerprint: false, onlyIfSuccessful: false
+
             }
+          }
+        } post {
+          always {
+            archiveArtifacts artifacts: '**/jetty-ee10/jetty-ee10-servlet/target/surefire-reports/*.dumpstream*',
+                    allowEmptyArchive: true, fingerprint: false, onlyIfSuccessful: false
           }
         }
 
