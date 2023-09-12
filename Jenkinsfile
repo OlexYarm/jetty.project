@@ -22,10 +22,11 @@ pipeline {
 
             }
           }
-        } post {
-          always {
-            archiveArtifacts artifacts: '**/jetty-ee10/jetty-ee10-servlet/target/surefire-reports/*.dumpstream*',
-                    allowEmptyArchive: true, fingerprint: false, onlyIfSuccessful: false
+          post {
+            always {
+              archiveArtifacts artifacts: '**/jetty-ee10/jetty-ee10-servlet/target/surefire-reports/*.dumpstream*',
+                      allowEmptyArchive: true, fingerprint: false, onlyIfSuccessful: false
+            }
           }
         }
 
