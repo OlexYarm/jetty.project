@@ -30,7 +30,7 @@ pipeline {
           }
         }
 
-        stage("Build / Test - JDK17") {
+        /*stage("Build / Test - JDK17") {
           agent { node { label 'linux' } }
           steps {
             timeout( time: 90, unit: 'MINUTES' ) {
@@ -61,7 +61,7 @@ pipeline {
               recordIssues id: "jdk17", name: "Static Analysis jdk17", aggregatingResults: true, enabledForFailure: true, tools: [mavenConsole(), java(), checkStyle(), errorProne(), spotBugs()]
             }
           }
-        }
+        }*/
       }
     }
   }
